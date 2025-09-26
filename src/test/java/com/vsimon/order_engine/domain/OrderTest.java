@@ -17,6 +17,7 @@ public class OrderTest {
     @Test
     void shouldCreateAnOrderWithValidData() {
         // Given
+        OrderId orderId = new OrderId();
         CustomerId customerId = new CustomerId("123");
         MonetaryAmount price = MonetaryAmount.of(new BigDecimal(25), Currency.getInstance("EUR"));
         Set<OrderLine> orderLines = Set.of(
@@ -24,7 +25,7 @@ public class OrderTest {
         );
 
         // When
-        Order order = Order.create(customerId, orderLines);
+        Order order = Order.create(orderId, customerId, orderLines);
 
         // Then
         assertNotNull(order);
